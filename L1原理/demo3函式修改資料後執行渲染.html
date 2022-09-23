@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo3</title>
+
+</head>
+
+<body>
+    <input type="text" id="input">
+    <div id="errorMsg">
+        字數不得超過10個字
+    </div>
+
+    <script>
+        // 取節點
+        var input = document.getElementById("input");
+        var errorMsg = document.getElementById("errorMsg");
+        errorMsg.style.display='none';
+        // 設定初始狀態
+        var state={
+            value:'',
+            error:false
+        }
+        // 設立函式修改資料並執行渲染
+        var setState = function(newState) {
+            state={
+                ...state,
+                ...newState
+            }
+            render();
+        }
+        // 設定渲染樣式
+        var render=function(){
+            // 輸入值
+            input.value=state.value;
+            if(state.error){
+                errorMsg.style.display='block';
+            }else{
+                errorMsg.style.display='none';
+            }
+        }
+        // 判斷是否超過10個字，並執行轉換狀態函式，若超過10個字即暫停輸入
+        var handleInput = function(value) {
+            if(value.length <10){
+                setState({
+                    value: value,
+                    error:false
+                });
+            }else{
+                setState({
+                    error: true});
+            }
+            console.log(input.value+'你動不了');
+        }
+        //加入input監聽事件，輸入後修正狀態
+        input.addEventListener("input", function() {
+            handleInput(this.value);
+        });
+    </script>
+</body>
+
+</html>

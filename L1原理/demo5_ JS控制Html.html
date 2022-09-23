@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo5_root"></div>
+    <script>
+        var demo5_root=document.getElementById('demo5_root');
+        var demo5_btn=document.getElementById('demo5_btn')
+        // 設定初始值
+            state={
+                like:false
+            }
+        // 修改初始值函式
+        var setNewState =function(newState){
+            state={
+                ...state,
+                ...newState
+            }
+            render();
+        };
+        // 渲染畫面函式
+        var render=function(){
+            demo5_root.innerHTML=
+        `
+        <button type='button' id='demo5_btn' onclick=demo5_btn() >${state.like?'已讚':'喜歡'}</button>
+        `
+        }
+        // 設立監聽
+        var demo5_btn =function(){
+           setNewState({
+            like:!state.like
+           })
+            console.log(state);
+        }
+        render()
+        // 控制畫面
+        // demo5_root.innerHTML=
+        // `
+        // <button type='button' id='demo5_btn' onclick=demo5_btn() >${state.like?'已讚':'喜歡'}</button>
+        // `
+</script>
+</body>
+</html>

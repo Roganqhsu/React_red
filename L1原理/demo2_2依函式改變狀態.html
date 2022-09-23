@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo2_2依函式改變狀態</title>
+</head>
+<body>
+    <!-- 點擊後改變狀態 -->
+    <button id="demo2_2Btn" type="button">喜歡</button>
+</body>
+<script>
+        
+    //  <!-- 設立節點 -->
+    const demo2_2Btn = document.getElementById("demo2_2Btn")
+    //  <!-- 設定初始狀態 -->
+    state={
+        like:false
+    }
+    // 設立函式改變狀態
+    const  setNewState=function(newState){
+            state=newState
+            // render();
+            console.log(state);
+            render();
+        }
+    // 設立渲染樣式
+    function render(){
+        if(state.like===false){
+            demo2_2Btn.innerHTML='喜歡'
+        }else{
+            demo2_2Btn.innerHTML='已讚'
+        }
+    };
+    // 設立監聽事件
+        demo2_2Btn.addEventListener('click',function(){
+            // 引入轉換參數執行函式改變狀態
+            setNewState({
+                like:!state.like
+            })
+        })
+        </script>
+</html>

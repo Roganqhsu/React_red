@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo2</title>
+</head>
+
+<body>
+    <button id="demo2_btn" type="button" name="demo2">
+        喜歡
+    </button>
+    <script>
+        // 取得節點
+        var demo2_btn=document.getElementById("demo2_btn");
+        // 設定狀態
+        var state={
+            like:false
+        };
+        // 設立函式來修改狀態
+        var setState=function(newState){
+            // 引入轉換參數
+            state=newState;
+            render();
+        };
+        // 渲染樣式
+        var render=function(){
+            console.log("render");
+            if(state.like){
+            demo2_btn.style.color='red';
+            demo2_btn.innerHTML = '已讚'
+        }else{
+            demo2_btn.style.color='black';
+            demo2_btn.innerHTML = '喜歡'
+        }
+    }
+    // 設立監聽事件
+        demo2_btn.addEventListener('click', function(){
+            // 點擊後引入轉換參數來執行修改狀態函式
+            setState({
+                like:!state.like
+            })
+            console.log(state.like);
+        });
+    </script>
+</body>
+</html>

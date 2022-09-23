@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo3_2函式修改資料後執行渲染</title>
+</head>
+<body>
+    <input id="demo3_2_btn"> </input>
+    <div id="demo3_3">請勿超過10個字</div>
+    <button type="button" id="MsgClear">X</div>
+    <script>
+        // 設立節點
+        var  demo3_2_btn =document.getElementById('demo3_2_btn');
+        var demo3_3=document.getElementById('demo3_3');
+        // 擴充功能，點擊後字體消失
+        var MsgClear=document.getElementById('MsgClear');
+        // 設立監聽
+        MsgClear.addEventListener('click',function(){
+            demo3_3.style.display='none';
+        })
+        // 設立初始值
+        demo3_3.style.display='none';
+        state={
+            value:'',
+            error:false
+        }
+        // 設立修改初始值函式，並執行渲染函式
+        function setNewState(NewState){
+            state={
+                ...state,
+                ...NewState
+            }
+            render();
+        }
+        // 設立渲染函式，依value值判斷樣式
+        function  render(){
+            demo3_2_btn.value=state.value
+            if(state.error){
+                demo3_3.style.display='block'
+            }else{
+                demo3_3.style.display='none'
+            }
+        }
+        // 設立函式執行修改函式
+        function handleClick(value){
+            if(value.length < 10){
+                setNewState({
+                    value:value,
+                    error:false
+                })  
+            }else{
+                setNewState({
+                    error:true
+                })
+            }
+            console.log(value);
+        }
+        // 設立input監聽事件
+        demo3_2_btn.addEventListener('input',function(value){
+            // 帶入value執行修改初始值函式
+            handleClick(this.value);
+        })    
+</script>
+</body>
+</html>

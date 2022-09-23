@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L2_this箭頭函數</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj={
+        name: 'jack',
+        f:function(){
+            var me=this 
+        setTimeout(function() {
+            console.log(me.name);
+        },100)
+    },
+    fn:()=>{
+        setTimeout(function() {
+            console.log(obj.name+'阿姨我還想努力');
+        },1000)
+    }
+};
+    obj.f();
+    obj.fn();
+</script>
+</html>

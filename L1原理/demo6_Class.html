@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo6_Class</title>
+</head>
+
+<body>
+    <div id="demo6_Class"></div>
+    <script>
+        // 設立節點
+        var demo6_Class = document.getElementById("demo6_Class");
+        // 建立組件
+        class Components{
+            setNewState(newState) {
+                state = {
+                    ...this.state,
+                    ...newState
+                }
+            }
+        }
+        class Apple{
+            apple(){
+                console.log('apple')
+            }
+            constructor() {
+                this.apple()
+            }
+        }
+        // 宣告類別
+        class Button extends (Components,Apple){
+            // 建構子
+            constructor() {
+                super();
+                // 初始值
+                this.state = {
+                    like: false,
+                }
+                this.render();
+            }
+            // 設定改變函式
+            setNewState(newState) {
+                this.state = {
+                    ...this.state,
+                    ...newState
+                }
+                render();
+            }
+            // 點擊後執行改變函式轉換狀態
+            handleClick() {
+                setNewState({
+                    like: !state.like
+                })
+                this.render();
+            }
+            // 設定渲染函式
+            render() {
+                console.log(this.state);
+                return `<button type="button">${this.state.like ? '哈哈' : '喜歡'}<button/>`
+            } 
+        }
+        // new Button();
+        class Title {
+            constructor() {
+                this.state = {
+                    text: '這是標題'
+                }
+                this.render();
+            }
+            render() {
+                return `<h1>${this.state.text}<h1/>`
+            }
+        }
+        class Wrap{
+            constructor() {
+                // super(props)
+            }
+            render(){
+                return `
+                wrap
+                ${new Title().render()}
+                ${new Button().render()}
+                `
+            }
+        }
+        demo6_Class.innerHTML=new Wrap().render();
+    </script>
+</body>
+
+</html>

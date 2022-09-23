@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo1</title>
+</head>
+<body>
+    <button 
+    style="border:1px solid #000"
+    id="btn_click_demo1" type="button" name="btn_click_demo1">
+        喜歡
+    </button>
+    <script>
+        var btn_click_demo1 = document.getElementById("btn_click_demo1");
+        btn_click_demo1.addEventListener("click", function(e) { if(btn_click_demo1.innerHTML =='喜歡'){
+            btn_click_demo1.style.color='black';
+            btn_click_demo1.innerHTML ='已讚'
+        }else{
+            btn_click_demo1.style.color='red';
+            btn_click_demo1.innerHTML ='喜歡'
+        }
+
+        }); //
+    </script>
+</body>
+</html>

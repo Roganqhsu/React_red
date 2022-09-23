@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="demo6_2" type="button"></button>
+    <script>
+        const demo6_2=document.getElementById('demo6_2');
+        state={
+            like: false,
+        };
+        const setState=function(newState){
+            state={
+                ...state,
+                ...newState
+            }
+            render();
+            console.log(state);
+        };
+        const render=function(){
+            if(state.like){
+                demo6_2.innerHTML='已讚';
+            }else{
+                demo6_2.innerHTML='喜歡'
+            }
+        }
+        render();
+        demo6_2.addEventListener('click',function(){
+            setState({
+                like:!state.like
+            })
+        })
+    </script>
+</body>
+</html>
