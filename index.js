@@ -42,6 +42,41 @@ app.post('/create', (req, res) => {
         }
     )
 })
+
+// 將資料庫傳入前端
+// 用get方法加入路徑，箭頭函式取得回傳值，
+// 用query方法取得資料庫，將回傳值用send方法傳入result
+app.get('/employees', (req, res) => {
+    db.query('SELECT * FROM employees',
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+            }
+        }
+    )
+})
+
+// 修改值
+// 
+app.put('/update', (req, res) => {
+    const id = req.body.id;
+    const wage = req.body.wage;
+    console.log(id);
+    // mysql方法找到相對應id，並修改新的wage
+    db.query('UPDATE  employees SET wage=? WHERE employeesid = ?',
+        [wage, id],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result)
+                console.log(result);
+            }
+        })
+})
+
 // 設立app監聽事件，將後端使用3006路徑連到資料庫
 app.listen(3006, () => {
     console.log('3006 running on port');
